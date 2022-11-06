@@ -82,7 +82,7 @@ def get_tmux_session_command(command: str, session_name: str, window_name: str =
 def get_ssh_command(host: str, port: int, user: str, key_path: str, command: str, env_vars: dict = None,
                     tty: bool = True, quiet: bool = False) -> str:
 
-    ssh_command = 'ssh -i %s -o StrictHostKeyChecking=no -o ConnectTimeout=10' % shlex.quote(key_path)
+    ssh_command = 'ssh -o 'IdentitiesOnly yes' -i %s -o StrictHostKeyChecking=no -o ConnectTimeout=10' % shlex.quote(key_path)
 
     if tty:
         ssh_command += ' -t'
